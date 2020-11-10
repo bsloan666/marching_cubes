@@ -4,6 +4,7 @@
 #include <stdio.h>
 #include "marching.h"
 #include <vector>
+#include "perlin_3d.h"
 
 float sphere_left(g3d::vector v)
 {
@@ -19,18 +20,18 @@ float sphere_right(g3d::vector v)
 }
 float sphere_top(g3d::vector v)
 {
-	 v.y()+=30;
-	 return   sqrt(v.x() * v.x() + v.y() * v.y() + v.z() * v.z())-70;
+	 return   sqrt(v.x() * v.x() + v.y() * v.y() + v.z() * v.z())-240;
 }
 
 float quadratic(g3d::vector v){
-    // return v.x() * v.x() * 0.5 - v.y() * v.y() * 0.33 +  v.z() * 0.2 * v.z() - 40.0;
-    // return v.x() * v.x() * 0.5 - v.y() * v.y() * 0.33 * v.x()+  v.z() * 0.2 * v.z() - 40.0;
-       return   sqrt( sin(v.x() * 0.01) * v.x()  * v.x()  + 
-                      cos(v.y() * 0.01) * v.y() * v.y() * 2 + 
-                      tan(v.z()* 0.01) * v.z() * v.z())-25;
+       return   sqrt( v.x() * v.y() - 
+                      v.y() * v.z() - 
+                      v.z() * v.x())-140;
 }
 
+float my_perlin(g3d::vector v){
+    return perlin(v.x(), v.y(), v.z()) * 100 -0.5;
+}
 float mixed_test(g3d::vector v)
 {
 	float spl = sphere_left(v);
@@ -52,7 +53,8 @@ int main(int argc, char ** argv){
 
 
 printf("Marching Cubes\n");
-        mcb::marching_cubes(quadratic, 256.f, (int)grain,  isoForm);
+        //mcb::marching_cubes(sphere_top, 512.f, (int)grain,  isoForm);
+        mcb::marching_cubes(quadratic, 512.f, (int)grain,  isoForm);
 printf("Smoothing\n");
 
 

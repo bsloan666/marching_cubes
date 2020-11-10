@@ -2,16 +2,19 @@ SOURCE = 	mesh.cpp  \
 		marching.cpp \
 		polygon.cpp  \
 		vertex.cpp \
+		perlin_3d.cpp \
 		unit_test.cpp
 
 OBJS = 		mesh.o  \
 		marching.o \
 		polygon.o  \
+		perlin_3d.o  \
 		vertex.o  
 
 INCLUDES = 	mesh.h  \
 		marching.h \
 		polygon.h  \
+		perlin_3d.h  \
 		vertex.h  
 
 CXXFLAGS = -I ../g3d -I ./ -fpermissive --std=c++11 
