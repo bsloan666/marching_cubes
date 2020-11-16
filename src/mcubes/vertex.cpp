@@ -1,15 +1,15 @@
-//		mcb_Vect.cp
-//		Blake G. Sloan 
+//        mcb_Vect.cp
+//        Blake G. Sloan 
  
-//		many thanks to Rex E. Bradford for this and other
-//		low-level Classes
+//        many thanks to Rex E. Bradford for this and other
+//        low-level Classes
 
 #include "vertex.h"
 
 bool mcb::vertex::set_ordinal(unsigned int o)
 {
-	ordinal = o;
-	return true;
+    ordinal = o;
+    return true;
 }
 
 
@@ -28,9 +28,9 @@ bool mcb::vertex::set_ordinal(unsigned int o)
 // Returns:  normal vector to the plane formed by a,b,c
 // Note: Handle degeneracy. Somehow.
 
-g3d::vector mcb::normal(  	const g3d::vector &a,   
-			const g3d::vector &b,
-                      	const g3d::vector &c)
+g3d::vector mcb::normal(      const g3d::vector &a,   
+            const g3d::vector &b,
+                          const g3d::vector &c)
 {
    g3d::vector norm = g3d::vector::cross( b-a, b-c);
    norm.normalize();
