@@ -33,12 +33,14 @@ namespace g3d
 	std::ostream& operator<<( std::ostream  &os , const vector &v)
 	{
 		os << v._x << " " << v._y << " " << v._z;
+        return os;
 	}
 	std::istream& operator>>( std::istream  &is,  vector &v)
 	{
 		is >> v._x;
 		is >> v._y;
 		is >> v._z;
+        return is;
 	}
 
 	 void vector::operator+=( const vector &v )
@@ -101,7 +103,7 @@ namespace g3d
 	
 	vector vector::cross( const vector &a, const vector &b )
 	{
-	  return vector::vector ( a.y() * b.z() - a.z() * b.y(), 
+	  return vector ( a.y() * b.z() - a.z() * b.y(), 
 					  a.z() * b.x() - a.x() * b.z(), 
 					  a.x() * b.y() - a.y() * b.x());
 	}

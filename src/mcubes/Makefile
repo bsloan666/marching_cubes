@@ -17,7 +17,8 @@ INCLUDES = 	mesh.h  \
 		perlin_3d.h  \
 		vertex.h  
 
-CXXFLAGS = -I ../g3d -I ./ -fpermissive --std=c++11 
+#CXXFLAGS = -I ../g3d -I ./ -fpermissive -I /opt/X11/include --std=c++11 
+CXXFLAGS = -I ../g3d -I ./ -I /opt/X11/include --std=c++11 
 
 XLDFLAGS = -L ../g3d -lg3d 
 
@@ -30,7 +31,7 @@ EXEC = unit_test
 all: $(EXEC) $(LIB)
 
 .cpp.o:
-	g++ -g $< -o $@ -c $(CXXFLAGS) 
+	g++  $< -o $@ -c $(CXXFLAGS) 
 
 $(LIB): $(OBJS) $(INCLUDES)
 	ar -r $@ $(OBJS) 

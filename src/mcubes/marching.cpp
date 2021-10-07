@@ -140,14 +140,16 @@ void mcb::marching_cubes( float (*evaluate)(g3d::vector),
     
     printf( "sampled volume is %g x %g x %g\n", dim,dim,dim);
     printf( "each cube is %g x %g x %g\n", cube_resol, cube_resol, cube_resol);
-    fprintf(stderr, "Sampling %d grid slices...\n", resol);
+    printf( "Sampling %d grid slices...\n", resol);
 
+    int count = 0;
     for(y=-hdim;y<hdim;y+=incr)
     {
         for(z=-hdim;z<hdim;z+=incr)
         {
             for(x=-hdim;x<hdim;x+=incr)
             {
+                // printf("So far, so good %d\n", count++);
                 mcb::Cube *pcube = new mcb::Cube();
                 pcube->cube_resol = cube_resol;
                 pcube->get_cube(evaluate, x,y,z);
@@ -155,6 +157,7 @@ void mcb::marching_cubes( float (*evaluate)(g3d::vector),
                 {
                     switch(pcube->corner_code)
                     {
+
                         case 0x0: 
                         break;
                         

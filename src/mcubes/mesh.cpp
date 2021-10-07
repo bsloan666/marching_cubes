@@ -54,7 +54,7 @@ static unsigned int created = 0;
 
 mcb::vertex * mcb::mesh::add_vertex( vertex* a, polygon *currPoly)
 {
-    unsigned int *index_ptr = vertex_map.find(a->coords);
+    const unsigned int *index_ptr = vertex_map.find(a->coords);
     unsigned int index;
     if(index_ptr == nullptr){
         index = vertex_map.size();

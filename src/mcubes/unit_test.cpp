@@ -56,9 +56,9 @@ int main(int argc, char ** argv){
 
 
     printf("Marching Cubes\n");
-    //mcb::marching_cubes(sphere_top, 512.f, (int)grain,  isoForm);
+    mcb::marching_cubes(mixed_test, 512.f, (int)grain,  isoForm);
     //mcb::marching_cubes(quadratic, 512.f, (int)grain,  isoForm);
-    mcb::marching_cubes(my_perlin, 512.f, (int)grain,  isoForm);
+    // mcb::marching_cubes(my_perlin, 512.f, (int)grain,  isoForm);
     printf("Smoothing\n");
 
 

@@ -20,7 +20,7 @@ class ExpandableHashMap {
     const ValueType* find(const KeyType& key) const;
 
     private:
-    unsigned int _hash(const KeyType &key) const
+    unsigned int _mhash(const KeyType &key) const
     {
         stringstream ss;
         ss << key;
@@ -126,7 +126,7 @@ void ExpandableHashMap<KeyType, ValueType>::associate(const KeyType& key, const 
     {
         expand();
     }
-    int index = _hash(key);
+    int index = _mhash(key);
     if (m_buckets[index] == nullptr)
     {
         m_buckets[index] = new list<pair<const KeyType*,const ValueType*> >;
@@ -161,7 +161,7 @@ void ExpandableHashMap<KeyType, ValueType>::associate(const KeyType& key, const 
 template<typename KeyType, typename ValueType>
 const ValueType* ExpandableHashMap<KeyType, ValueType>::find(const KeyType& key) const
 {
-    int index = _hash(key);
+    int index = _mhash(key);
 
     if (m_buckets[index] == nullptr)
     {
